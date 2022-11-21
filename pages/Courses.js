@@ -30,6 +30,8 @@ const Courses=(props) =>{
                 </div>
                 </div>
             
+
+            
             
         ))}
         </div>
