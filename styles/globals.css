@@ -11,6 +11,12 @@ a {
   text-decoration: none;
 }
 
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: grey;
+}
+
 * {
   box-sizing: border-box;
 }

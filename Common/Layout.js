@@ -10,14 +10,14 @@ const Layout = (props) => {
       <>
         {true ? (
           <div>
-   
+
             <Navigation/>
             {children}
             {!footerstatus && <Footer />}
           </div>
         ) : (
           <div className="container">
-       
+
             <Navigation/>
             {children}
             {!footerstatus && <Footer />}

@@ -2,6 +2,7 @@ import React from "react";
 import Image from 'next/image';
 import Styles from '../styles/Courses.module.css'
 
+
 export const getStaticProps =async ( ) => {
     //..api call
     const response = await fetch('https://fakestoreapi.com/products?sort=desc');

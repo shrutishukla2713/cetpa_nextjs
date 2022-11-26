@@ -1,13 +1,19 @@
 import React from "react";
+import styles from '../styles/Contact.module.scss';
 
 const Contact =(props) =>{
    
     return(
-        <div>
-       
-            <h1>This is a Contact page in Next Js Training folder.</h1>
-           
-        </div>
+                <div className={styles.contact}>
+                    <h2 className={styles.contact__title}>Any questions? <span className={styles.colored}>Contact us.</span>
+                    </h2>
+                    <p className={styles.contact__paragraph}>We are looking forward to hearing from you. Feel free to contact us
+                        if you have any questions!</p>
+                    <a href="https://www.myntra.com/contactus">
+                        <button>Contact Us</button>
+                    </a>
+                </div>
+            
     )
 
 }

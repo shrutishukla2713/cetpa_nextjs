@@ -1,17 +1,23 @@
-import React from "react";
-import Head1 from "./Head1";
-import Head2 from "./Head2";
-import Head3 from "./Head3";
+import Image from 'next/image'
+import Link from "next/link";
+import styles from '../styles/Header.module.scss';
+import logo from '../public/Myntra.png'
 
-const Header=() =>{
-   
-    return(
-        <div className='row '>
-            <Head1/>
-            <Head2/>
-            <Head3/>
-        </div>
-    )
+export default function Header() {
+     return (
+      <>
+      <header className={styles.header}>
+      <div className={styles.header__logo}>
+      <Image src='/Myntra.png' alt="Logo" width={100} height={50}/>
+          <h1 className={styles.header__title}>Online Shopping Site</h1>
+      </div>
+      <div   className={styles.header__Rig}><Link className="btn btn-sm btn-outline-secondary m-1" href="/Registration">Registration</Link>
+              <Link className="btn btn-sm btn-outline-secondary m-1" href="/Login">Login</Link>
+            <Link className="btn btn-sm btn-outline-secondary m-1" href="#">Logout</Link>
+ </div>
+            </header>
+
+ </>
+      )
 
 }
-export default Header

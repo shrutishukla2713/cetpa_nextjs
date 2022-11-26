@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import styles from '../styles/about.module.css';
+import styles from '../styles/about.module.scss';
 import Image from "next/image";
 import Head from "next/head";
 
