@@ -25,4 +25,4 @@ const ProductsSchema = mongoose.Schema({
 })
 
 mongoose.models = {} //nextjs
-module.exports = mongoose.model('Products', ProductsSchema);
+module.exports = mongoose.model('products', ProductsSchema);
