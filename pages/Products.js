@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 
+
 //ssr - page visit
 export const getServerSideProps = async () => {
     //api call
@@ -14,6 +15,7 @@ export const getServerSideProps = async () => {
 }
 
 const Products = (props) => {
+   
     console.log('props', props);
     const {productData} = props;
     return (

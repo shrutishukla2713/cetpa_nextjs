@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
+import Head3 from "./Head3";
  
 const Navigation=() =>{
     return (
@@ -47,9 +48,8 @@ const Navigation=() =>{
                 </svg>
                 <span className="header__price snipcart-total-price"></span>
             </a>
-            <Link className="btn btn-sm btn-outline-secondary m-1" href="/Registration">Registration</Link>
-              <Link className="btn btn-sm btn-outline-secondary m-1" href="/Login">Login</Link>
-            <Link className="btn btn-sm btn-outline-secondary m-1" href="#">Logout</Link>
+            <Link className="btn btn-sm btn-outline-secondary m-1" href="/registration">Registration</Link>
+           <Head3 />
 </nav>
 </div>
         </div>

@@ -1,35 +1,94 @@
-import React from "react";
+import React, { useState } from "react";
+import { useRouter } from "next/router";
+import axios from "axios";
 
 
-const Login = () => {
-    return (
-        <div className="container">
-            <div className="row justify-content-center">
-                <div className="col-6 m-3 ">
-                    <h1 className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Login Page</h1>
-                    <form>
-                        <div className="form-outline mb-4">
-                            <label className="form-label" >Email address</label>
-                            <input type="email" id="form2Example1" className="form-control" />
-                        </div>
-                        <div className="form-outline mb-4">
-                            <label className="form-label">Password</label>
-                            <input type="password" id="form2Example2" className="form-control" />
-                        </div>
-                        <div className="col  mb-3">
-                            <a href="#!">Forgot password?</a>
-                        </div>
-                        <button type="submit" className="btn btn-lg btn-secondary m-1">Sign in</button>
-                        <button type="button" class="cancelbtn">Cancel</button>
-                        <div className="text-center">
-                            <p>Not a member? <a href="#!">Register</a></p>
+const login = () => {
+  const [formdata, setFormdata] = useState({});
+  const [submitStatus, setSubmitStatus] = useState(false);
+  const router = useRouter();
 
-                        </div>
-                    </form>
-                </div>
-            </div >
-        </div >
-    )
-}
 
-export default Login;
+  const loginFn = async () => {
+    console.log("formdata", formdata, process.env.BASE_URL);
+    const url = "http://localhost:3000/" + "api/users/login";
+    try {
+      const response = await axios.post(url, formdata);
+      console.log(response.data);
+      if (response.data.userid) {
+        // localStorage.setItem("loginStatus", true);
+        // localStorage.setItem("username", response.data.email);
+        // localStorage.setItem("name", response.data.name);
+        router.push("/Courses");
+      }
+    } catch {
+      setSubmitStatus(true);
+    }
+  };
+
+  const handleChange = (e) => {
+    console.log(e.target.name, e.target.value);
+    let tempObj = {};
+    tempObj[e.target.name] = e.target.value;
+    setFormdata({ ...formdata, ...tempObj });
+  };
+  return (
+    <div>
+      {submitStatus && (
+        <div class="alert alert-danger" role="alert">
+          This is a danger alert—check it out!
+        </div>
+      )}
+
+      <div className="container">
+        <div className="row justify-content-center">
+          <div className="col-6 m-3 ">
+            <h1 className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
+              Login Page
+            </h1>
+            <form>
+              <div className="form-outline mb-4">
+                <label className="form-label">Email address</label>
+                <input
+                  type="email"
+                  name="email"
+                  id="form2Example1"
+                  className="form-control"
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="form-outline mb-4">
+                <label className="form-label">Password</label>
+                <input
+                  type="password"
+                  name="password"
+                  id="form2Example2"
+                  className="form-control"
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="col  mb-3">
+                <a href="#!">Forgot password?</a>
+              </div>
+              <button
+                type="submit"
+                onClick={loginFn}
+                className="btn btn-lg btn-secondary m-1"
+              >
+                Sign in
+              </button>
+             
+              <div className="text-center">
+                <p>
+                  Not a member? <a href="/registration">Register</a>
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default login;
