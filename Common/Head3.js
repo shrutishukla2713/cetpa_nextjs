@@ -9,7 +9,7 @@ const Head3 = () => {
     localStorage.removeItem('loginStatus');
     localStorage.removeItem('name');
     localStorage.removeItem('username');
-    router.reload('/Products');
+    router.reload('/Courses');
   }
   return (
     <div className='col-3'>

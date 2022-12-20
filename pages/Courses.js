@@ -1,7 +1,7 @@
 
-//import React, { useEffect } from "react";
-import React from "react";
 import Image from 'next/image';
+import React, { useEffect } from "react";
+import {useRouter} from 'next/router';
 import Styles from '../styles/Courses.module.css'
 
 
@@ -14,13 +14,13 @@ export const getStaticProps =async ( ) => {
     }
   }
 const Courses=(props) =>{
-    // const router = useRouter();
-    // useEffect(() => {
-    //     let loginStatus = localStorage.getItem('loginStatus');
-    //     if(!loginStatus) {
-    //         router.push('/login');
-    //     }
-    // })
+    const router = useRouter();
+    useEffect(() => {
+        let loginStatus = localStorage.getItem('loginStatus');
+        if(!loginStatus) {
+            router.push('/login');
+        }
+    })
     console.log(props,"propssssss");
     const {productData} = props;
     return ( 

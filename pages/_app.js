@@ -3,9 +3,9 @@ import Layout from "../Common/Layout";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 
-//function MyApp({ Component, pageProps }) {
-  //return <Component {...pageProps} />
-//}
+// function MyApp({ Component, pageProps }) {
+//   return <Component {...pageProps} />
+// }
 
 function MyApp({ Component, pageProps }) {
   console.log('pageProps',pageProps)
