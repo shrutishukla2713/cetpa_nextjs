@@ -1,4 +1,4 @@
-import Products from "../../../models/products";
+import Products from "../../../models/products.js";
 import connectDb from "../../../middleware/mongoose";
 
 //POST Call to fetch some data

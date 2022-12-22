@@ -1,4 +1,4 @@
-import Products from "../../../models/products";
+import Products from "../../../models/products.js";
 import connectDb from "../../../middleware/mongoose";
 //connection with database pending
 // export default function handler(req, res) {
