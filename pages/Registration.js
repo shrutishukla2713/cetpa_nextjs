@@ -210,4 +210,4 @@ const Registration = (props) => {
   );
 };
 
-export default registration;
+export default Registration;
