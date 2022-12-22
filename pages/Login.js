@@ -5,42 +5,43 @@ import axios from "axios";
 export const getStaticProps = () => {
   let url = process.env.BASE_URL;
   return {
-    props: {
-      baseurl: url,
-    },
-  };
-};
+      props: {
+          baseurl: url
+      }
+  }
+}
 
 const Login = (props) => {
   const [formdata, setFormdata] = useState({});
   const [submitStatus, setSubmitStatus] = useState(false);
   const router = useRouter();
-  const { baseurl } = props;
-  console.log("baseurl", baseurl);
+  const {baseurl} = props;
+  console.log('baseurl', baseurl);
 
   const loginFn = async () => {
-    console.log("formdata", formdata, process.env.BASE_URL);
-    const url = baseurl + "api/users/login";
-    try {
-      const response = await axios.post(url, formdata);
-      console.log(response.data);
-      if (response.data.userid) {
-        localStorage.setItem("loginStatus", true);
-        localStorage.setItem("username", response.data.email);
-        localStorage.setItem("name", response.data.name);
-        router.push('/');
+      console.log('formdata', formdata, process.env.BASE_URL);
+      const url =  baseurl + 'api/users/login';
+      try{
+          const response = await axios.post(url, formdata);
+          console.log(response.data);
+          if(response.data.userid) {
+              localStorage.setItem('loginStatus', true);
+              localStorage.setItem('username', response.data.email);
+              localStorage.setItem('name', response.data.name)
+              router.push('/');
+          }
       }
-    } catch {
-      setSubmitStatus(true);
-    }
-  };
+      catch{
+          setSubmitStatus(true);
+      }
+  }
 
   const handleChange = (e) => {
-    console.log(e.target.name, e.target.value);
-    let tempObj = {};
-    tempObj[e.target.name] = e.target.value;
-    setFormdata({ ...formdata, ...tempObj });
-  };
+      console.log(e.target.name, e.target.value);
+      let tempObj = {};
+      tempObj[e.target.name] = e.target.value;
+      setFormdata({...formdata, ...tempObj});
+  }
 
   return (
     <div>

@@ -3,74 +3,82 @@ import { useRouter } from "next/router";
 import axios from "axios";
 
 export const getStaticProps = () => {
-  let url = "http://localhost:3000/";
+  let url = process.env.BASE_URL;
   return {
-    props: {
-      baseurl: url,
-    },
-  };
-};
+      props: {
+          baseurl: url
+      }
+  }
+}
 
-const registration = (props) => {
+const Registration = (props) => {
+
   // const initilObj = {
-  //   name: "",
-  //   email: "",
-  //   mobile: "",
-  //   password: "",
-  // };
+  //     name: '',
+  //     email: '',
+  //     mobile: '',
+  //     password: ''
+  // }
   const [formdata, setFormdata] = useState({});
   const [errorformdata, setErrorFormdata] = useState({});
   const [submitStatus, setSubmitStatus] = useState(false);
   const router = useRouter();
-  const { baseurl } = props;
-  console.log("baseurl", baseurl);
+  const {baseurl} = props;
+  console.log('baseurl', baseurl);
 
   const registerFn = async () => {
-    const validationStatus = validate();
-    if (validationStatus) {
-      console.log("formdata", formdata, process.env.BASE_URL);
-      const url = baseurl + "api/users/register";
-      try {
-        const response = await axios.post(url, formdata);
-        console.log(response.data);
-        if (response.status === 201) {
-          setSubmitStatus(true);
-          //setFormdata(initilObj);
-          router.push("/Login");
-        }
-      } catch {}
-    }
-  };
+      const validationStatus = validate();
+      if(validationStatus) {
+          console.log('formdata', formdata, process.env.BASE_URL);
+          const url =  baseurl + 'api/users/register'
+          try{
+              const response = await axios.post(url, formdata);
+              console.log(response.data);
+              if(response.status === 201) {
+                  setSubmitStatus(true);
+                  //setFormdata(initilObj);
+                  router.push('/login');
+              }
+          }
+          catch{
+
+          }
+          
+      }
+  }
 
   const validate = () => {
-    if (formdata.mobile) {
-      if (formdata.mobile.length > 5) {
-        //remove error for mobile field
-        return true;
-      } else {
-        let tempObj = {};
-        tempObj["mobile"] = "Mobile length not sufficient";
-        setErrorFormdata({ ...errorformdata, ...tempObj });
-        return false;
+      if(formdata.mobile) {
+          if(formdata.mobile.length >5) {
+              //remove error for mobile field
+              return true;
+          }
+          else {
+              let tempObj = {}
+              tempObj['mobile'] = 'Mobile length not sufficient';
+              setErrorFormdata({...errorformdata, ...tempObj});
+              return false;
+          }
       }
-    } else {
-      let tempObj = {};
-      tempObj["mobile"] = "Mobile can not be empty";
-      setErrorFormdata({ ...errorformdata, ...tempObj });
-      return false;
-    }
-  };
+      else {
+          let tempObj = {}
+          tempObj['mobile'] = 'Mobile can not be empty';
+          setErrorFormdata({...errorformdata, ...tempObj});
+          return false;
+      }
+  }
 
   const handleChange = (e) => {
-    console.log(e.target.name, e.target.value);
-    let tempObj = {};
-    tempObj[e.target.name] = e.target.value;
-    setFormdata({ ...formdata, ...tempObj });
-  };
+      console.log(e.target.name, e.target.value);
+      let tempObj = {};
+      tempObj[e.target.name] = e.target.value;
+      setFormdata({...formdata, ...tempObj});
+  }
 
   useEffect(() => {
-    console.log("errors", errorformdata);
-  });
+      console.log('errors', errorformdata);
+  })
+
 
   return (
     <div>
