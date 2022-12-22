@@ -37,7 +37,7 @@ const Registration = (props) => {
               if(response.status === 201) {
                   setSubmitStatus(true);
                   //setFormdata(initilObj);
-                  router.push('/login');
+                  router.push('/Login');
               }
           }
           catch{
@@ -191,7 +191,7 @@ const Registration = (props) => {
                               </div>
                               <div className="text-center">
                                 <p>
-                                  already account? <a href="/login">Login</a>
+                                  already account? <a href="/Login">Login</a>
                                 </p>
                               </div>
                             </form>
