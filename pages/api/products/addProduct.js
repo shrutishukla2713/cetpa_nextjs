@@ -1,8 +1,7 @@
-import Products from "../../../models/products.js";
-import connectDb from "../../../middleware/mongoose";
+import Products from "../../../models/Products.js";
+import connectDb from "../../../middleware/mongoose.js";
 
-//POST Call to fetch some data
-// http://localhost:3000/api/addProduct
+
 const handler = async (req, res) => {
 
     if(req.method == 'POST') {
@@ -18,7 +17,7 @@ const handler = async (req, res) => {
             })
     
             const response = await temp.save();
-            //const response = await sql.query('INSERT INTO table..');
+          
 
             res.status(201).json(response);
         }
