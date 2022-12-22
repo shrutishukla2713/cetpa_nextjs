@@ -1,4 +1,4 @@
-import Layout from '../common/Layout'
+import Layout from '../Common/Layout'
 import '../styles/globals.css'
 import 'bootstrap/dist/css/bootstrap.css';
 //import {Montserrat} from '@next/font/google';
