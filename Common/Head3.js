@@ -13,7 +13,7 @@ const Head3 = () => {
   }
   return (
     <div className='col-3'>
-         <Link className="btn btn-sm btn-outline-secondary m-1" href="/login">Login</Link>
+         <Link className="btn btn-sm btn-outline-secondary m-1" href="/Login">Login</Link>
          <button onClick={logoutFn}>Logout</button>
     </div>
   )

@@ -13,7 +13,7 @@ import {
 export async function getServerSideProps(context) {
     try {
         const { id } = context.query;
-        const res = await fetch('https://fakestoreapi.com/products/' + id);
+        const res = await fetch(process.env.API_URL + id);
         const data = await res.json();
         return {
             props: {productData: data }

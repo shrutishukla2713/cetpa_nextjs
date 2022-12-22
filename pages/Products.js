@@ -5,7 +5,7 @@ import Link from 'next/link';
 //ssr - page visit
 export const getServerSideProps = async () => {
     //api call
-    const response = await fetch('https://fakestoreapi.com/products/');
+    const response = await fetch(process.env.API_URL);
     // console.log(response);
     const data = await response.json(); //to convert stringified json to parsed json
     // console.log(data);
