@@ -1,7 +1,5 @@
 import React from "react";
-import Header from "../Common/Header";
 import Footer from "../Common/Footer";
-import NavBar from "../Common/NAvBar";
 import Navigation from "./NavigationMyntra";
 
 const Layout = (props) => {
